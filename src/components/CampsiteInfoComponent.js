@@ -20,13 +20,14 @@ class CampsiteInfo extends Component {
     }
 
     renderComments(comments) {
-        console.log(this.props.campsite.comments);
+        console.log(comments);
 
-        if (this.props.campsite.comments) {
+        if (comments) {
             return (
                 <div className="col-md-5 m-1">
                     <h4>Comments</h4>
-                    {this.props.campsite.comments.map((comment, index) => (
+
+                    {comments.comments.map((comment, index) => (
                         <p key={index}>
                             {comment.text}
                             <br />
