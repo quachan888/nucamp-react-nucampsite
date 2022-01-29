@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
-import CarouselItem from "reactstrap/lib/CarouselItem";
+import { Card, CardImg, CardText, CardBody } from "reactstrap";
 
 function RenderCard({ item }) {
     return (

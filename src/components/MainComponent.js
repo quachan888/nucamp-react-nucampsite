@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
-import Directory from "./DirectoryComponent";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+// Import data
 import { CAMPSITES } from "../shared/campsites.js";
 import { COMMENTS } from "../shared/comments";
 import { PARTNERS } from "../shared/partners";
 import { PROMOTIONS } from "../shared/promotions";
+
+// Import Component
+import Directory from "./DirectoryComponent";
 import CampsiteInfo from "./CampsiteInfoComponent";
 import Header from "./Headercomponents";
 import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
-import { Switch, Route, Redirect } from "react-router-dom";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 
