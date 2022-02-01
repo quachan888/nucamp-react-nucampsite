@@ -15,6 +15,7 @@ import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
+import Test from "./Test.js";
 
 class Main extends Component {
     constructor(props) {
@@ -89,6 +90,9 @@ class Main extends Component {
                         path="/aboutus"
                         render={() => <About partners={this.state.partners} />}
                     />
+
+                    <Route exact path="/test" component={Test} />
+
                     <Route exact path="/contactus" component={Contact} />
                     <Redirect to="/home" />
                 </Switch>
