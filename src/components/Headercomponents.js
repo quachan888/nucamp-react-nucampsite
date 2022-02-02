@@ -17,7 +17,6 @@ import {
     Label,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import { findRenderedDOMComponentWithClass } from 'react-dom/cjs/react-dom-test-utils.production.min';
 
 class Header extends Component {
     constructor(props) {

@@ -1,55 +1,48 @@
 import { Component } from 'react';
+import { Button, Modal, ModalBody, Form, Input, Label } from 'reactstrap';
 
 class Test extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isGoing: true,
-            numberOfGuests: 2,
+            fullName: '',
+            isModalOpen: false,
         };
-
-        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
-    handleInputChange(event) {
-        const target = event.target;
-        const name = target.name;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-
-        this.setState({ [name]: value });
+    toggleModal() {
+        this.setState({ isModalOpen: !this.state.isModalOpen });
     }
 
     handleSubmit(event) {
-        console.log('Submmited: ' + this.state.value);
+        console.log(`Guest name: ${this.fullName.value}`);
+        this.setState({ fullName: `Welcome back ${this.fullName.value}` });
+        this.toggleModal();
         event.preventDefault();
     }
 
     render() {
         return (
-            <div className="container">
-                <h1>Test</h1>
-                <form>
-                    <label>
-                        Is going:
-                        <input
-                            name="isGoing"
-                            type="checkbox"
-                            checked={this.state.isGoing}
-                            onChange={this.handleInputChange}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Number of guests:
-                        <input
-                            name="numberOfGuests"
-                            type="number"
-                            value={this.state.numberOfGuests}
-                            onChange={this.handleInputChange}
-                        />
-                    </label>
-                </form>
+            <div className="container my-5">
+                <h1>{this.state.fullName}</h1>
+                <Button onClick={this.toggleModal}>Check in</Button>
+
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalBody>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Label htmlFor="fullName">Enter your name:</Label>
+                            <Input
+                                type="text"
+                                name="fullName"
+                                id="fullName"
+                                innerRef={(input) => (this.fullName = input)}
+                            />
+                            <Button>Check in</Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
             </div>
         );
     }
