@@ -1,21 +1,56 @@
-import React, { Component } from "react";
-import { Jumbotron, Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import React, { Component } from 'react';
+import {
+    Jumbotron,
+    Navbar,
+    NavbarBrand,
+    Nav,
+    NavbarToggler,
+    Collapse,
+    NavItem,
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { findRenderedDOMComponentWithClass } from 'react-dom/cjs/react-dom-test-utils.production.min';
 
 class Header extends Component {
     constructor(props) {
         super(props);
 
-        this.toggleNav = this.toggleNav.bind(this);
         this.state = {
             isNavOpen: false,
+            isModalOpen: false,
         };
+        this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen,
         });
+    }
+
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen,
+        });
+    }
+
+    handleLogin(event) {
+        alert(`Username: ${this.username.value}. Password: ${this.password.value}. Remember: ${this.remember.checked}`);
+        console.log(
+            `Username: ${this.username.value}. Password: ${this.password.value}. Remember: ${this.remember.checked}`,
+        );
+        this.toggleModal();
+        event.preventDefault();
     }
 
     render() {
@@ -61,9 +96,54 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                             </Nav>
+                            <span className="navbar-text ml-auto">
+                                <Button outline color="warning" onClick={this.toggleModal}>
+                                    <i className="fa fa-sign-in ga-lg" />
+                                    &nbsp; Login
+                                </Button>
+                            </span>
                         </Collapse>
                     </div>
                 </Navbar>
+
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label htmlFor="username">Username</Label>
+                                <Input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    innerRef={(input) => (this.username = input)}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Password</Label>
+                                <Input
+                                    type="text"
+                                    id="password"
+                                    name="password"
+                                    innerRef={(input) => (this.password = input)}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label check>
+                                    <Input
+                                        type="checkbox"
+                                        name="remember"
+                                        innerRef={(input) => (this.remember = input)}
+                                    />{' '}
+                                    Remember me
+                                </Label>
+                            </FormGroup>
+                            <Button type="submit" value="submit" color="primary">
+                                Login
+                            </Button>
+                        </Form>
+                    </ModalBody>
+                </Modal>
             </>
         );
     }

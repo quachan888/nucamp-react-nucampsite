@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer(props) {
     return (
@@ -28,16 +28,16 @@ export default function Footer(props) {
                         <h5>Social</h5>
                         <a href="http://instagram.com/" className="btn btn-social-icon btn-instagram">
                             <i className="fa fa-instagram" />
-                        </a>{" "}
+                        </a>{' '}
                         <a href="http://www.facebook.com/" className="btn btn-social-icon btn-facebook">
                             <i className="fa fa-facebook" />
-                        </a>{" "}
+                        </a>{' '}
                         <a href="http://twitter.com/" className="btn btn-social-icon btn-twitter">
                             <i className="fa fa-twitter" />
-                        </a>{" "}
+                        </a>{' '}
                         <a href="http://youtube.com/" className="btn btn-social-icon btn-google">
                             <i className="fa fa-youtube" />
-                        </a>{" "}
+                        </a>{' '}
                     </div>
 
                     <div className="col-sm-4 text-center">

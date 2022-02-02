@@ -1,5 +1,5 @@
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function RenderCampsite({ campsite }) {
     if (campsite) {
@@ -27,7 +27,10 @@ function RenderComments({ comments }) {
                     <p key={index}>
                         {comment.text}
                         <br />
-                        -- {comment.author}, {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "2-digit" }).format(new Date(Date.parse(comment.date)))}
+                        -- {comment.author},{' '}
+                        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(
+                            new Date(Date.parse(comment.date)),
+                        )}
                     </p>
                 ))}
             </div>

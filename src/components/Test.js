@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class Test extends Component {
     constructor(props) {
@@ -15,14 +15,13 @@ class Test extends Component {
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
-        const value =
-            target.type === "checkbox" ? target.checked : target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
 
         this.setState({ [name]: value });
     }
 
     handleSubmit(event) {
-        console.log("Submmited: " + this.state.value);
+        console.log('Submmited: ' + this.state.value);
         event.preventDefault();
     }
 
