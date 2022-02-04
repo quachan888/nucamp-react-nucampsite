@@ -26,8 +26,8 @@ class Contact extends Component {
                 firstName: false,
                 lastName: false,
                 phoneNum: false,
-                email: false,
-            },
+                email: false
+            }
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -93,7 +93,7 @@ class Contact extends Component {
                                         validators={{
                                             required,
                                             minLength: minLength(2),
-                                            maxLength: maxLength(15),
+                                            maxLength: maxLength(15)
                                         }}
                                         id="firstName"
                                         name="firstName"
@@ -107,7 +107,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be at least 2 characters',
-                                            maxLength: 'Must be 15 characters or less',
+                                            maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -127,7 +127,7 @@ class Contact extends Component {
                                         validators={{
                                             required,
                                             minLength: minLength(2),
-                                            maxLength: maxLength(15),
+                                            maxLength: maxLength(15)
                                         }}
                                     />
                                     <Errors
@@ -138,7 +138,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be at least 2 characters',
-                                            maxLength: 'Must be 15 characters or less',
+                                            maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -159,7 +159,7 @@ class Contact extends Component {
                                             required,
                                             minLength: minLength(10),
                                             maxLength: maxLength(15),
-                                            isNumber,
+                                            isNumber
                                         }}
                                     />
                                     <Errors
@@ -171,7 +171,7 @@ class Contact extends Component {
                                             required: 'Required',
                                             minLength: 'Must be at least 10 numbers',
                                             maxLength: 'Must be 15 numbers or less',
-                                            isNumber: 'Must be a number',
+                                            isNumber: 'Must be a number'
                                         }}
                                     />
                                 </Col>
@@ -190,7 +190,7 @@ class Contact extends Component {
                                         placeholder="Email"
                                         validators={{
                                             required,
-                                            validEmail,
+                                            validEmail
                                         }}
                                     />
                                     <Errors
@@ -200,7 +200,7 @@ class Contact extends Component {
                                         component="div"
                                         messages={{
                                             required: 'Required',
-                                            validEmail: 'Invalid email address',
+                                            validEmail: 'Invalid email address'
                                         }}
                                     />
                                 </Col>
@@ -225,7 +225,8 @@ class Contact extends Component {
                                         className="form-control"
                                         type="select"
                                         model=".contactType"
-                                        name="contactType">
+                                        name="contactType"
+                                    >
                                         <option>By Phone</option>
                                         <option>By Email</option>
                                     </Control.select>

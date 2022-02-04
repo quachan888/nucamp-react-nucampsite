@@ -14,7 +14,7 @@ import {
     Form,
     FormGroup,
     Input,
-    Label,
+    Label
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ class Header extends Component {
 
         this.state = {
             isNavOpen: false,
-            isModalOpen: false,
+            isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -33,20 +33,20 @@ class Header extends Component {
 
     toggleNav() {
         this.setState({
-            isNavOpen: !this.state.isNavOpen,
+            isNavOpen: !this.state.isNavOpen
         });
     }
 
     toggleModal() {
         this.setState({
-            isModalOpen: !this.state.isModalOpen,
+            isModalOpen: !this.state.isModalOpen
         });
     }
 
     handleLogin(event) {
         alert(`Username: ${this.username.value}. Password: ${this.password.value}. Remember: ${this.remember.checked}`);
         console.log(
-            `Username: ${this.username.value}. Password: ${this.password.value}. Remember: ${this.remember.checked}`,
+            `Username: ${this.username.value}. Password: ${this.password.value}. Remember: ${this.remember.checked}`
         );
         this.toggleModal();
         event.preventDefault();
