@@ -26,7 +26,6 @@ function RenderCampsite({ campsite }) {
                 <Card>
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
-                        {/* <CardTitle>{campsite.name}</CardTitle> */}
                         <CardText>{campsite.description}</CardText>
                     </CardBody>
                 </Card>
@@ -70,27 +69,25 @@ class CommentForm extends Component {
                 author: false
             }
         };
-        this.toggleModal = this.toggleModal.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(values) {
+    handleSubmit = (values) => {
         console.log('Current state is: ' + JSON.stringify(values));
         alert('Current state is: ' + JSON.stringify(values));
         this.toggleModal();
-    }
+    };
 
-    toggleModal() {
+    toggleModal = () => {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
-    }
+    };
 
     render() {
         return (
             <>
                 <Button outline onClick={this.toggleModal}>
-                    <i className="fa fa-pencil" aria-hidden="true" />
+                    <i className="fa fa-pencil fa-lg" />
                     &nbsp; Submit Comment
                 </Button>
 
