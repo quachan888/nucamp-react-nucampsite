@@ -11,7 +11,12 @@ import Header from './Headercomponents';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { addComment, fetchCampsites, fetchComments, fetchPromotions } from '../redux/ActionCreators';
+import {
+    postComment,
+    fetchCampsites,
+    fetchComments,
+    fetchPromotions
+} from '../redux/ActionCreators';
 
 const mapStateToProps = (state) => {
     return {
@@ -23,7 +28,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    addComment: (campsiteId, rating, author, text) => addComment(campsiteId, rating, author, text),
+    postComment: (campsiteId, rating, author, text) =>
+        postComment(campsiteId, rating, author, text),
     fetchCampsites: () => fetchCampsites(),
     resetFeedbackForm: () => actions.reset('feedbackForm'),
     fetchComments: () => fetchComments(),
@@ -41,10 +47,16 @@ class Main extends Component {
         const HomePage = () => {
             return (
                 <Home
-                    campsite={this.props.campsites.campsites.filter((campsite) => campsite.featured)[0]}
+                    campsite={
+                        this.props.campsites.campsites.filter((campsite) => campsite.featured)[0]
+                    }
                     campsitesLoading={this.props.campsites.isLoading}
                     campsitesErrMess={this.props.errMess}
-                    promotion={this.props.promotions.promotions.filter((promotion) => promotion.featured)[0]}
+                    promotion={
+                        this.props.promotions.promotions.filter(
+                            (promotion) => promotion.featured
+                        )[0]
+                    }
                     promotionLoading={this.props.promotions.isLoading}
                     promotionErrMess={this.props.promotions.errMess}
                     partner={this.props.partners.filter((partner) => partner.featured)[0]}
@@ -56,7 +68,9 @@ class Main extends Component {
             return (
                 <CampsiteInfo
                     campsite={
-                        this.props.campsites.campsites.filter((campsite) => campsite.id === +match.params.campsiteId)[0]
+                        this.props.campsites.campsites.filter(
+                            (campsite) => campsite.id === +match.params.campsiteId
+                        )[0]
                     }
                     isLoading={this.props.campsites.isLoading}
                     errMess={this.props.campsites.errMess}
@@ -64,7 +78,7 @@ class Main extends Component {
                         (comment) => comment.campsiteId === +match.params.campsiteId
                     )}
                     commentsErrMess={this.props.comments.errMess}
-                    addComment={this.props.addComment}
+                    postComment={this.props.postComment}
                 />
             );
         };
@@ -74,14 +88,22 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path="/home" component={HomePage} />
-                    <Route exact path="/directory" render={() => <Directory campsites={this.props.campsites} />} />
+                    <Route
+                        exact
+                        path="/directory"
+                        render={() => <Directory campsites={this.props.campsites} />}
+                    />
                     <Route path="/directory/:campsiteId" component={CampsiteWithId} />
                     <Route
                         exact
                         path="/contactus"
                         render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />}
                     />
-                    <Route exact path="/aboutus" render={() => <About partners={this.props.partners} />} />
+                    <Route
+                        exact
+                        path="/aboutus"
+                        render={() => <About partners={this.props.partners} />}
+                    />
                     <Redirect to="/home" />
                 </Switch>
                 <Footer />
